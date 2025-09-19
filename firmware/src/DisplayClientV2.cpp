@@ -5,6 +5,30 @@
 #define VERSION 'j'
 
 
+																//         ████▀▀▀▀▀████
+																//       ██▀   MRZ-RACING   ▀██
+																//      ██   SIMAGIC-ALPHA   ██
+																//       ██   BOX - V1     ██
+																//         ████▄▄▄▄▄████
+
+																//    ┌─────────────────────────────────────────┐
+																//    │   ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐         │
+																//    │   │B1 │ │B2 │ │B3 │ │B4 │ │B5 │         │
+																//    │   └───┘ └───┘ └───┘ └───┘ └───┘         │
+																//    │                                         │
+																//    │   ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐         │
+																//    │   │B6 │ │B7 │ │B8 │ │B9 │ │B10│         │
+																//    │   └───┘ └───┘ └───┘ └───┘ └───┘         │
+																//    │                                         │
+																//    │        ( R1 )             ( R2 )        │
+																//    │                                         │
+																//    │   [SW1]   [SW2]   [SW3]   [SW4]         │
+																//    └─────────────────────────────────────────┘
+																//              ║                  ║
+																//              ║                  ║
+																//           EMB-L              EMB-R
+
+
 
 // ----------------------------------------------------- PLEASE USE SETUP ASSISTANT AVAILABLE IN SUB FOLDER !!!! -------------------------------------------
 // ----------------------------------------------------- PLEASE USE SETUP ASSISTANT AVAILABLE IN SUB FOLDER !!!! -------------------------------------------
@@ -91,8 +115,8 @@
 #define MCP23017_TOTAL_BUTTONS_COUNT 16  //{"Group":"MCP23017 Buttons","Name":"MCP23017_TOTAL_BUTTONS_COUNT","Title":"Total number of buttons across all MCP23017","DefaultValue":"0","Type":"int","Max":128}
 
 // Direcciones I2C para cada MCP23017 activo (configurar solo los que se usan)
-#define MCP23017_I2C_ADDRESS_1 0x20 //{"Name":"MCP23017_I2C_ADDRESS_1","Title":"I2C address for MCP23017 #1","DefaultValue":"32","Type":"int","Min":32,"Max":39,"Condition":"MCP23017_CHIPS_COUNT>=1"}
-#define MCP23017_I2C_ADDRESS_2 0x21 //{"Name":"MCP23017_I2C_ADDRESS_2","Title":"I2C address for MCP23017 #2","DefaultValue":"33","Type":"int","Min":32,"Max":39,"Condition":"MCP23017_CHIPS_COUNT>=2"}
+#define MCP23017_I2C_ADDRESS_1 0x21 //{"Name":"MCP23017_I2C_ADDRESS_1","Title":"I2C address for MCP23017 #1","DefaultValue":"32","Type":"int","Min":32,"Max":39,"Condition":"MCP23017_CHIPS_COUNT>=1"}
+#define MCP23017_I2C_ADDRESS_2 0x20 //{"Name":"MCP23017_I2C_ADDRESS_2","Title":"I2C address for MCP23017 #2","DefaultValue":"33","Type":"int","Min":32,"Max":39,"Condition":"MCP23017_CHIPS_COUNT>=2"}
 #define MCP23017_I2C_ADDRESS_3 0x22 //{"Name":"MCP23017_I2C_ADDRESS_3","Title":"I2C address for MCP23017 #3","DefaultValue":"34","Type":"int","Min":32,"Max":39,"Condition":"MCP23017_CHIPS_COUNT>=3"}
 #define MCP23017_I2C_ADDRESS_4 0x23 //{"Name":"MCP23017_I2C_ADDRESS_4","Title":"I2C address for MCP23017 #4","DefaultValue":"35","Type":"int","Min":32,"Max":39,"Condition":"MCP23017_CHIPS_COUNT>=4"}
 #define MCP23017_I2C_ADDRESS_5 0x24 //{"Name":"MCP23017_I2C_ADDRESS_5","Title":"I2C address for MCP23017 #5","DefaultValue":"36","Type":"int","Min":32,"Max":39,"Condition":"MCP23017_CHIPS_COUNT>=5"}
@@ -114,7 +138,7 @@ int MCP_BUTTON_LOGICMODES[128]; // Modos de lógica
 #endif
 
 // ----------------------------------------------------- HW SETTINGS, PLEASE REVIEW ALL -------------------------------------------
-#define DEVICE_NAME "I2C_MASTER_BUTTONS" //{"Group":"General","Name":"DEVICE_NAME","Title":"Device name,\r\n make sure to use a unique name when using multiple arduinos","DefaultValue":"SimHub Dash","Type":"string","Template":"#define DEVICE_NAME \"{0}\""}
+#define DEVICE_NAME "mrz-racing-simagic-alpha-box-v1" //{"Group":"General","Name":"DEVICE_NAME","Title":"Device name,\r\n make sure to use a unique name when using multiple arduinos","DefaultValue":"SimHub Dash","Type":"string","Template":"#define DEVICE_NAME \"{0}\""}
 #define DEVICE_UNIQUE_ID "e6661fb6-9cd3-4375-9ce0-fa296595e1b8" //{"UniqueId":"e6661fb6-9cd3-4375-9ce0-fa296595e1b8" //{"UniqueId":"dae20348-2fc7-437c-8434-145bc970682c","Name":"DEVICE_UNIQUE_ID","Type":"uniqueid"}
 
 #define ENABLE_MICRO_GAMEPAD 1           //{"Group":"GAMEPAD","Name":"ENABLE_MICRO_GAMEPAD","Title":"Enable arduino micro gamepad output for all the activated buttons/encoders","DefaultValue":"0","Type":"bool"}
@@ -500,20 +524,20 @@ SHPWMPin shCONSPIN(CONS_PIN, 40);
 
 #define GAMEPAD_AXIS_01_ENABLED 1           //{"Group":"Gamepad analog axis","Name":"GAMEPAD_AXIS_01_ENABLED","Title":"Throttle axis enabled","DefaultValue":"0","Type":"bool"}
 #define GAMEPAD_AXIS_01_PIN A0               //{"Name":"GAMEPAD_AXIS_01_PIN","Title":"Throttle axis analog pin","DefaultValue":"0","Type":"pin;Throttle input","Condition":"GAMEPAD_AXIS_01_ENABLED>0"}
-#define GAMEPAD_AXIS_01_MINVALUE 768          //{"Name":"GAMEPAD_AXIS_01_MINVALUE","Title":"Throttle axis analog minimum value","DefaultValue":"0","Type":"int","Condition":"GAMEPAD_AXIS_01_ENABLED>0"}
-#define GAMEPAD_AXIS_01_MAXVALUE 842        //{"Name":"GAMEPAD_AXIS_01_MAXVALUE","Title":"Throttle axis analog maximum value","DefaultValue":"1024","Type":"int","Condition":"GAMEPAD_AXIS_01_ENABLED>0"}
+#define GAMEPAD_AXIS_01_MINVALUE 0          //{"Name":"GAMEPAD_AXIS_01_MINVALUE","Title":"Throttle axis analog minimum value","DefaultValue":"0","Type":"int","Condition":"GAMEPAD_AXIS_01_ENABLED>0"}
+#define GAMEPAD_AXIS_01_MAXVALUE 1024        //{"Name":"GAMEPAD_AXIS_01_MAXVALUE","Title":"Throttle axis analog maximum value","DefaultValue":"1024","Type":"int","Condition":"GAMEPAD_AXIS_01_ENABLED>0"}
 #define GAMEPAD_AXIS_01_SAMPLING 10         //{"Name":"GAMEPAD_AXIS_01_SAMPLING","Title":"Throttle axis analog sampling precision","DefaultValue":"10","Type":"list","Condition":"GAMEPAD_AXIS_01_ENABLED>0","ListValues":"10,10 bits(default 0->1024);11,11 bits oversampling (slower 0->2048)"}
 #define GAMEPAD_AXIS_01_EXPONENTIALFACTOR 1 //{"Name":"GAMEPAD_AXIS_01_EXPONENTIALFACTOR","Title":"Throttle axis exponential correction","DefaultValue":"1","Type":"double","Condition":"GAMEPAD_AXIS_01_ENABLED>0","dMin":0.1,"dMax":1.9}
 
-#define GAMEPAD_AXIS_02_ENABLED 1           //{"Name":"GAMEPAD_AXIS_02_ENABLED","Title":"Accelerator axis enabled","DefaultValue":"0","Type":"bool"}
+#define GAMEPAD_AXIS_02_ENABLED 0           //{"Name":"GAMEPAD_AXIS_02_ENABLED","Title":"Accelerator axis enabled","DefaultValue":"0","Type":"bool"}
 #define GAMEPAD_AXIS_02_PIN A1               //{"Name":"GAMEPAD_AXIS_02_PIN","Title":"Accelerator axis analog pin","DefaultValue":"0","Type":"pin;Accelerator input","Condition":"GAMEPAD_AXIS_02_ENABLED>0"}
-#define GAMEPAD_AXIS_02_MINVALUE 545          //{"Name":"GAMEPAD_AXIS_02_MINVALUE","Title":"Accelerator axis analog minimum value","DefaultValue":"0","Type":"int","Condition":"GAMEPAD_AXIS_02_ENABLED>0"}
-#define GAMEPAD_AXIS_02_MAXVALUE 705       //{"Name":"GAMEPAD_AXIS_02_MAXVALUE","Title":"Accelerator axis analog maximum value","DefaultValue":"1024","Type":"int","Condition":"GAMEPAD_AXIS_02_ENABLED>0"}
+#define GAMEPAD_AXIS_02_MINVALUE 0          //{"Name":"GAMEPAD_AXIS_02_MINVALUE","Title":"Accelerator axis analog minimum value","DefaultValue":"0","Type":"int","Condition":"GAMEPAD_AXIS_02_ENABLED>0"}
+#define GAMEPAD_AXIS_02_MAXVALUE 1024       //{"Name":"GAMEPAD_AXIS_02_MAXVALUE","Title":"Accelerator axis analog maximum value","DefaultValue":"1024","Type":"int","Condition":"GAMEPAD_AXIS_02_ENABLED>0"}
 #define GAMEPAD_AXIS_02_SAMPLING 10         //{"Name":"GAMEPAD_AXIS_02_SAMPLING","Title":"Accelerator axis analog sampling precision","DefaultValue":"10","Type":"list","Condition":"GAMEPAD_AXIS_02_ENABLED>0","ListValues":"10,10 bits(default 0->1024);11,11 bits oversampling (slower 0->2048)"}
 #define GAMEPAD_AXIS_02_EXPONENTIALFACTOR 1 //{"Name":"GAMEPAD_AXIS_02_EXPONENTIALFACTOR","Title":"Accelerator axis exponential correction","DefaultValue":"1","Type":"double","Condition":"GAMEPAD_AXIS_02_ENABLED>0","dMin":0.1,"dMax":1.9}
 
-#define GAMEPAD_AXIS_03_ENABLED 0           //{"Name":"GAMEPAD_AXIS_03_ENABLED","Title":"Brake axis enabled","DefaultValue":"0","Type":"bool"}
-#define GAMEPAD_AXIS_03_PIN 0               //{"Name":"GAMEPAD_AXIS_03_PIN","Title":"Brake axis analog pin","DefaultValue":"0","Type":"pin;Brake input","Condition":"GAMEPAD_AXIS_03_ENABLED>0"}
+#define GAMEPAD_AXIS_03_ENABLED 1           //{"Name":"GAMEPAD_AXIS_03_ENABLED","Title":"Brake axis enabled","DefaultValue":"0","Type":"bool"}
+#define GAMEPAD_AXIS_03_PIN A1               //{"Name":"GAMEPAD_AXIS_03_PIN","Title":"Brake axis analog pin","DefaultValue":"0","Type":"pin;Brake input","Condition":"GAMEPAD_AXIS_03_ENABLED>0"}
 #define GAMEPAD_AXIS_03_MINVALUE 0          //{"Name":"GAMEPAD_AXIS_03_MINVALUE","Title":"Brake axis analog minimum value","DefaultValue":"0","Type":"int","Condition":"GAMEPAD_AXIS_03_ENABLED>0"}
 #define GAMEPAD_AXIS_03_MAXVALUE 1024       //{"Name":"GAMEPAD_AXIS_03_MAXVALUE","Title":"Brake axis analog maximum value","DefaultValue":"1024","Type":"int","Condition":"GAMEPAD_AXIS_03_ENABLED>0"}
 #define GAMEPAD_AXIS_03_SAMPLING 10         //{"Name":"GAMEPAD_AXIS_03_SAMPLING","Title":"Brake axis analog sampling precision","DefaultValue":"10","Type":"list","Condition":"GAMEPAD_AXIS_03_ENABLED>0","ListValues":"10,10 bits(default 0->1024);11,11 bits oversampling (slower 0->2048)"}
@@ -539,26 +563,26 @@ SHGamepadAxis SHGAMEPADAXIS03(GAMEPAD_AXIS_03_PIN, 2, GAMEPAD_AXIS_03_MINVALUE, 
 // ----------------------- ADDITIONAL BUTTONS ---------------------------------------------------------------
 // https://github.com/zegreatclan/SimHub/wiki/Arduino-Press-Buttons
 // ----------------------------------------------------------------------------------------------------------
-#define ENABLED_BUTTONS_COUNT 2 //{"Group":"Additional Buttons","Name":"ENABLED_BUTTONS_COUNT","Title":"Additional buttons (directly connected to the arduino, 12 max) buttons count","DefaultValue":"0","Type":"int","Max":12}
+#define ENABLED_BUTTONS_COUNT 4 //{"Group":"Additional Buttons","Name":"ENABLED_BUTTONS_COUNT","Title":"Additional buttons (directly connected to the arduino, 12 max) buttons count","DefaultValue":"0","Type":"int","Max":12}
 #ifdef  INCLUDE_BUTTONS
 
 // PLACE BUTTONS IN MASTER DEVICE OVER THE 100 TO PREVENT CONFLICT WITH SLAVE PINS
-#define BUTTON_PIN_1 4       //{"Name":"BUTTON_PIN_1","Title":"1'st Additional button digital pin","DefaultValue":"3","Type":"pin;Button 1","Condition":"ENABLED_BUTTONS_COUNT>=1"}
+#define BUTTON_PIN_1 15      //{"Name":"BUTTON_PIN_1","Title":"1'st Additional button digital pin","DefaultValue":"3","Type":"pin;Button 1","Condition":"ENABLED_BUTTONS_COUNT>=1"}
 #define BUTTON_WIRINGMODE_1 0   //{"Name":"BUTTON_WIRINGMODE_1","Title":"1'st Additional button wiring","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=1","ListValues":"0,Pin to GND;1,VCC to pin"}
 #define BUTTON_LOGICMODE_1 0    //{"Name":"BUTTON_LOGICMODE_1","Title":"1'st Additional button logic","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=1","ListValues":"0,Normal;1,Reversed"}
 #define BUTTON_TYPE_1 0		//{"Name":"BUTTON_TYPE_1","Title":"Is virtual button","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=1","ListValues":"0,Physically Connected;1,Serialized"}
 
-#define BUTTON_PIN_2 5          //{"Name":"BUTTON_PIN_2","Title":"2'nd Additional button digital pin","DefaultValue":"3","Type":"pin;Button 2","Condition":"ENABLED_BUTTONS_COUNT>=2"}
+#define BUTTON_PIN_2 14          //{"Name":"BUTTON_PIN_2","Title":"2'nd Additional button digital pin","DefaultValue":"3","Type":"pin;Button 2","Condition":"ENABLED_BUTTONS_COUNT>=2"}
 #define BUTTON_WIRINGMODE_2 0   //{"Name":"BUTTON_WIRINGMODE_2","Title":"2'nd Additional button wiring","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=2","ListValues":"0,Pin to GND;1,VCC to pin"}
 #define BUTTON_LOGICMODE_2 0    //{"Name":"BUTTON_LOGICMODE_2","Title":"2'nd Additional button logic","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=2","ListValues":"0,Normal;1,Reversed"}
 #define BUTTON_TYPE_2 0			//{"Name":"BUTTON_TYPE_2","Title":"Is virtual button","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=2","ListValues":"0,Physically Connected;1,Serialized"}
 
-#define BUTTON_PIN_3 6          //{"Name":"BUTTON_PIN_3","Title":"3'rd Additional button digital pin","DefaultValue":"3","Type":"pin;Button 3","Condition":"ENABLED_BUTTONS_COUNT>=3"}
+#define BUTTON_PIN_3 16          //{"Name":"BUTTON_PIN_3","Title":"3'rd Additional button digital pin","DefaultValue":"3","Type":"pin;Button 3","Condition":"ENABLED_BUTTONS_COUNT>=3"}
 #define BUTTON_WIRINGMODE_3 0   //{"Name":"BUTTON_WIRINGMODE_3","Title":"3'rd Additional button wiring","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=3","ListValues":"0,Pin to GND;1,VCC to pin"}
 #define BUTTON_LOGICMODE_3 0    //{"Name":"BUTTON_LOGICMODE_3","Title":"3'rd Additional button logic","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=3","ListValues":"0,Normal;1,Reversed"}
 #define BUTTON_TYPE_3 0			//{"Name":"BUTTON_TYPE_3","Title":"Is virtual button","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=3","ListValues":"0,Physically Connected;1,Serialized"}
 
-#define BUTTON_PIN_4 7          //{"Name":"BUTTON_PIN_4","Title":"4'th Additional button digital pin","DefaultValue":"3","Type":"pin;Button 4","Condition":"ENABLED_BUTTONS_COUNT>=4"}
+#define BUTTON_PIN_4 10          //{"Name":"BUTTON_PIN_4","Title":"4'th Additional button digital pin","DefaultValue":"3","Type":"pin;Button 4","Condition":"ENABLED_BUTTONS_COUNT>=4"}
 #define BUTTON_WIRINGMODE_4 0   //{"Name":"BUTTON_WIRINGMODE_4","Title":"4'th Additional button wiring","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=4","ListValues":"0,Pin to GND;1,VCC to pin"}
 #define BUTTON_LOGICMODE_4 0    //{"Name":"BUTTON_LOGICMODE_4","Title":"4'th Additional button logic","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=4","ListValues":"0,Normal;1,Reversed"}
 #define BUTTON_TYPE_4 0			//{"Name":"BUTTON_TYPE_4","Title":"Is virtual button","DefaultValue":"0","Type":"list","Condition":"ENABLED_BUTTONS_COUNT>=4","ListValues":"0,Physically Connected;1,Serialized"}
@@ -1096,7 +1120,10 @@ void idle(bool critical) {
 #ifdef INCLUDE_MCP23017_BUTTONS
 	shMcpButtons.read();
 #endif
-	if (ButtonsDebouncer.Debounce()) {
+
+
+
+if (ButtonsDebouncer.Debounce()) {
 		bool changed = false;
 #ifdef INCLUDE_BUTTONS
 		for (int btnIdx = 0; btnIdx < ENABLED_BUTTONS_COUNT; btnIdx++) {
@@ -1154,7 +1181,7 @@ void EncoderPositionChanged(int encoderId, int position, byte direction) {
 		arqserial.CustomPacketStart(0x01, 3);
 		arqserial.CustomPacketSendByte(encoderId);
 		arqserial.CustomPacketSendByte(direction);
-		arqserial.CustomPacketSendByte(position);
+		arqserial.CustomPacketSendByte(position);1024
 		arqserial.CustomPacketEnd();
 		
 	}
@@ -1455,7 +1482,7 @@ void setup()
 	
 	// Mapear botones globalmente (chip0: pines 0-15, chip1: pines 16-31, etc.)
 	for (int i = 0; i < MCP23017_TOTAL_BUTTONS_COUNT && i < 128; i++) {
-		MCP_BUTTON_IDS[i] = i + 1;
+		MCP_BUTTON_IDS[i] = i+ENABLED_BUTTONS_COUNT + 1;
 		MCP_BUTTON_PINS[i] = i; // Pin global (0-127)
 		MCP_BUTTON_WIRINGS[i] = false; // por defecto a GND con pullup interna
 		MCP_BUTTON_LOGICMODES[i] = 0;
